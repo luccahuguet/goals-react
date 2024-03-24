@@ -14,7 +14,10 @@ function App() {
   ]);
 
   const addNewGoalHandler = newGoal => {
+    // Safer approch otherwise you could end up with a wrong state
     setCourseGoals(prevGoals => [...prevGoals, newGoal]);
+    // setCourseGoals(prevGoals => prevGoals.concat(newGoal));
+    // setCourseGoals(courseGoals.concat(newGoal));
     console.log(courseGoals);
   }
 
