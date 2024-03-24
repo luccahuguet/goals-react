@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './NewGoal.css'
 
 function NewGoal(props) {
-  let userText = '';
+  const [userText, setUserText] = useState('');
 
   function addGoalHandler(event) {
     event.preventDefault();
@@ -12,11 +12,13 @@ function NewGoal(props) {
       text: userText
     };
 
+    setUserText('');
+
     props.onAddGoal(newGoal);
   };
 
   function textChangeHandler(event) {
-    userText = event.target.value;
+    setUserText(event.target.value);
   };
 
   return (
@@ -25,6 +27,7 @@ function NewGoal(props) {
         type="text"
         placeholder="Enter goal title"
         onChange={textChangeHandler}
+        value={userText}
       />
       <button type="submit">Add Goal</button>
     </form >
