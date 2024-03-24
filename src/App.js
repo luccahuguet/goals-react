@@ -4,16 +4,17 @@
 import './App.css';
 import GoalList from './components/GoalList/GoalList';
 import NewGoal from './components/NewGoal/NewGoal';
+import React, { useState } from 'react';
 
 function App() {
-  const courseGoals = [
+  const [courseGoals, setCourseGoals] = useState([
     { id: 1, text: 'Learn React' },
     { id: 2, text: 'Build a project' },
     { id: 3, text: 'Master JavaScript' }
-  ];
+  ]);
 
   const addNewGoalHandler = newGoal => {
-    courseGoals.push(newGoal);
+    setCourseGoals(prevGoals => [...prevGoals, newGoal]);
     console.log(courseGoals);
   }
 
